@@ -1,0 +1,3 @@
+*.plist
+Pods/
+Podfile.lock

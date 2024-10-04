@@ -102,16 +102,6 @@ class HouseholdViewModel: ObservableObject {
             saveHousehold()
         }
     }
-    
-    func housemateName(for userID: UUID) -> String {
-            // Retrieve the name of the housemate with the given userID from your data
-            // Replace this with your actual logic to fetch the housemate's name
-            if let housemate = household.housemates.first(where: { $0.id == userID }) {
-                return housemate.name
-            } else {
-                return "Unknown Housemate"
-            }
-        }
 
     
     func saveHousehold() {
@@ -134,24 +124,15 @@ class HouseholdViewModel: ObservableObject {
             self.household = loadedHousehold
         } else {
             // If there is no saved data, initialize a new empty Household
-            self.household = Household(name: "", address: "", housemates: [])
+            self.household = Household(name: "", address: "")
         }
     }
     
-    func addHousemate(_ housemate: User) {
-        household.housemates.append(housemate)
-    }
 }
 
 struct Household: Codable {
     var name: String
     var address: String
-    var housemates: [User]
-}
-
-struct User: Codable, Identifiable {
-    var id: UUID = UUID()
-    var name: String
 }
 
 

@@ -3,19 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F254476B2CB0922000D30F23 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F254476A2CB0922000D30F23 /* FirebaseAnalytics */; };
+		F254476D2CB0922000D30F23 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F254476C2CB0922000D30F23 /* FirebaseAuth */; };
+		F254476F2CB0922000D30F23 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = F254476E2CB0922000D30F23 /* FirebaseCore */; };
+		F25447712CB0922000D30F23 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F25447702CB0922000D30F23 /* FirebaseDatabase */; };
+		F254478F2CB0994B00D30F23 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F254478E2CB0994B00D30F23 /* Models.swift */; };
+		F25447912CB0994B00D30F23 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F254478D2CB0994B00D30F23 /* ContentView.swift */; };
+		F25447932CB099D200D30F23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F25447922CB099D200D30F23 /* GoogleService-Info.plist */; };
 		F2E647152B09AB1300897C9D /* RoomMatesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E647142B09AB1300897C9D /* RoomMatesApp.swift */; };
-		F2E647172B09AB1300897C9D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E647162B09AB1300897C9D /* ContentView.swift */; };
 		F2E647192B09AB1400897C9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2E647182B09AB1400897C9D /* Assets.xcassets */; };
 		F2E6471C2B09AB1400897C9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2E6471B2B09AB1400897C9D /* Preview Assets.xcassets */; };
 		F2E647262B09AB1400897C9D /* RoomMatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E647252B09AB1400897C9D /* RoomMatesTests.swift */; };
 		F2E647302B09AB1400897C9D /* RoomMatesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E6472F2B09AB1400897C9D /* RoomMatesUITests.swift */; };
 		F2E647322B09AB1400897C9D /* RoomMatesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E647312B09AB1400897C9D /* RoomMatesUITestsLaunchTests.swift */; };
-		F2E6473F2B09B06A00897C9D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E6473E2B09B06A00897C9D /* Models.swift */; };
-		F2E647412B09B19A00897C9D /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E647402B09B19A00897C9D /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,9 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F254478D2CB0994B00D30F23 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F254478E2CB0994B00D30F23 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		F25447922CB099D200D30F23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F2E647112B09AB1300897C9D /* RoomMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E647142B09AB1300897C9D /* RoomMatesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomMatesApp.swift; sourceTree = "<group>"; };
-		F2E647162B09AB1300897C9D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F2E647182B09AB1400897C9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2E6471B2B09AB1400897C9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F2E647212B09AB1400897C9D /* RoomMatesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoomMatesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,15 +52,24 @@
 		F2E6472B2B09AB1400897C9D /* RoomMatesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoomMatesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E6472F2B09AB1400897C9D /* RoomMatesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomMatesUITests.swift; sourceTree = "<group>"; };
 		F2E647312B09AB1400897C9D /* RoomMatesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomMatesUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		F2E6473E2B09B06A00897C9D /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		F2E647402B09B19A00897C9D /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F25447742CB094D100D30F23 /* ViewModels */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModels; sourceTree = "<group>"; };
+		F25447782CB094FF00D30F23 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+		F25447812CB0954600D30F23 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
+		F25447822CB0954D00D30F23 /* Utils */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Utils; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F2E6470E2B09AB1300897C9D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F254476B2CB0922000D30F23 /* FirebaseAnalytics in Frameworks */,
+				F254476F2CB0922000D30F23 /* FirebaseCore in Frameworks */,
+				F25447712CB0922000D30F23 /* FirebaseDatabase in Frameworks */,
+				F254476D2CB0922000D30F23 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,11 +113,15 @@
 		F2E647132B09AB1300897C9D /* RoomMates */ = {
 			isa = PBXGroup;
 			children = (
+				F25447822CB0954D00D30F23 /* Utils */,
+				F25447812CB0954600D30F23 /* Models */,
+				F25447782CB094FF00D30F23 /* Views */,
+				F25447742CB094D100D30F23 /* ViewModels */,
 				F2E647142B09AB1300897C9D /* RoomMatesApp.swift */,
-				F2E647162B09AB1300897C9D /* ContentView.swift */,
-				F2E6473E2B09B06A00897C9D /* Models.swift */,
-				F2E647402B09B19A00897C9D /* Helpers.swift */,
+				F254478D2CB0994B00D30F23 /* ContentView.swift */,
+				F254478E2CB0994B00D30F23 /* Models.swift */,
 				F2E647182B09AB1400897C9D /* Assets.xcassets */,
+				F25447922CB099D200D30F23 /* GoogleService-Info.plist */,
 				F2E6471A2B09AB1400897C9D /* Preview Content */,
 			);
 			path = RoomMates;
@@ -147,6 +166,12 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F25447742CB094D100D30F23 /* ViewModels */,
+				F25447782CB094FF00D30F23 /* Views */,
+				F25447812CB0954600D30F23 /* Models */,
+				F25447822CB0954D00D30F23 /* Utils */,
 			);
 			name = RoomMates;
 			productName = RoomMates;
@@ -197,7 +222,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					F2E647102B09AB1300897C9D = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -221,6 +246,9 @@
 				Base,
 			);
 			mainGroup = F2E647082B09AB1300897C9D;
+			packageReferences = (
+				F25447692CB0908100D30F23 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = F2E647122B09AB1300897C9D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -238,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E6471C2B09AB1400897C9D /* Preview Assets.xcassets in Resources */,
+				F25447932CB099D200D30F23 /* GoogleService-Info.plist in Resources */,
 				F2E647192B09AB1400897C9D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,10 +292,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2E6473F2B09B06A00897C9D /* Models.swift in Sources */,
-				F2E647172B09AB1300897C9D /* ContentView.swift in Sources */,
+				F254478F2CB0994B00D30F23 /* Models.swift in Sources */,
+				F25447912CB0994B00D30F23 /* ContentView.swift in Sources */,
 				F2E647152B09AB1300897C9D /* RoomMatesApp.swift in Sources */,
-				F2E647412B09B19A00897C9D /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,7 +511,6 @@
 		F2E647392B09AB1400897C9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -502,7 +529,6 @@
 		F2E6473A2B09AB1400897C9D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -521,7 +547,6 @@
 		F2E6473C2B09AB1400897C9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -538,7 +563,6 @@
 		F2E6473D2B09AB1400897C9D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -592,6 +616,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F25447692CB0908100D30F23 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F254476A2CB0922000D30F23 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F25447692CB0908100D30F23 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		F254476C2CB0922000D30F23 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F25447692CB0908100D30F23 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		F254476E2CB0922000D30F23 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F25447692CB0908100D30F23 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		F25447702CB0922000D30F23 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F25447692CB0908100D30F23 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F2E647092B09AB1300897C9D /* Project object */;
 }
