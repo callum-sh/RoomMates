@@ -97,7 +97,7 @@ struct AuthenticationView: View {
 }
 
 // TODO: what is this, why do we have it, and why cant we remove it? 
-extension String: Identifiable {
+extension String: @retroactive Identifiable {
     public var id: String { self }
 }
 

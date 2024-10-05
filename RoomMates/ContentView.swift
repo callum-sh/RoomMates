@@ -7,54 +7,46 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-                    VStack {
-                        // Main Content
-                        ZStack(alignment: .top) {
-                            // Background color to match the fade effect
-                            Color(.systemBackground)
-                                .edgesIgnoringSafeArea(.all)
+            VStack {
+                // Main Content
+                ZStack(alignment: .top) {
+                    // Background color to match the fade effect
+                    Color(.systemBackground)
+                        .edgesIgnoringSafeArea(.all)
 
-                            VStack(spacing: 0) {
-                                // Header with dynamic opacity and height
-                                headerView
-                                // ScrollView with GeometryReader to track offset
-                                ScrollView {
-                                    GeometryReader { geometry in
-                                        Color.clear.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .global).minY)
-                                    }
-                                    .frame(height: 0) // Set frame height to 0 so it does not affect layout
-
-                                    VStack(alignment: .leading, spacing: 16) {
-                                        // Add your sections and content here
-                                    }
-                                    .padding()
-                                }
-                            }
-                        }
-                        
-                        // Footer as TabView
-                        TabView {
-                            ExpensesView()
-                                .tabItem {
-                                    Image(systemName: "dollarsign.circle.fill")
-                                    Text("Expenses")
-                                }
-                            
-                            FeedbackView()
-                                .tabItem {
-                                    Image(systemName: "bubble.left.and.bubble.right.fill")
-                                    Text("Feedback")
-                                }
-
-                            HouseInfoView()
-                                .tabItem {
-                                    Image(systemName: "house.fill")
-                                    Text("House Info")
-                                }
-                        }
-                     
+                    VStack(spacing: 0) {
+                        // Header with dynamic opacity and height
+                        headerView
+                        // ScrollView with GeometryReader to track offset
                     }
                 }
+                
+                // Nav Footer
+                TabView {
+                    ExpensesView()
+                        .tabItem {
+                            Image(systemName: "dollarsign.circle.fill")
+                            Text("Expenses")
+                        }
+                    
+                    FeedbackView()
+                        .tabItem {
+                            Image(systemName: "bubble.left.and.bubble.right.fill")
+                            Text("Feedback")
+                        }
+
+                    HouseInfoView()
+                        .tabItem {
+                            Image(systemName: "house.fill")
+                            Text("Chores")
+                        }
+                }
+                .navigationDestination(isPresented: $isProfileExpanded) {
+                    ProfileView()
+                }
+                .navigationTitle("RoomMate")
+            }
+        }
     }
     
     // TODO: move into new file?
@@ -82,50 +74,37 @@ struct ContentView: View {
         .background(
             LinearGradient(
                 gradient: Gradient(colors: [
-                    Color(red: 0.96, green: 0.61, blue: 0.27),  // Light orange
-                    Color(red: 0.42, green: 0.72, blue: 0.84)   // Soft teal
+                    Color(red: 0.82, green: 0.82, blue: 0.94),   // Soft teal
+                    .gray // gray (believe it or not)
                 ]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
-            .opacity(1 - Double(scrollOffset / 150))  // Adjust opacity for a fading effect as you scroll
         )
-        .background(.ultraThinMaterial)  // Adds a translucent blur effect similar to Apple Health
+        .background(.ultraThinMaterial)
     }
 }
 
 
-// PreferenceKey for tracking scroll offset
-struct ScrollOffsetPreferenceKey: PreferenceKey {
-    static var defaultValue: CGFloat = 0
-
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = nextValue()
-    }
-}
-
-
-// Placeholder Views for Tab Items
-struct ExpensesView: View {
+struct ProfileView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
-        Text("Expenses View")
-            .font(.largeTitle)
-            .padding()
+        Button(action: {
+            authViewModel.signOut()
+        }) {
+            Text("Log Out")
+                .frame(maxWidth: 300)
+                .padding()
+                .background(Color.red)
+                .foregroundColor(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
     }
 }
 
-struct FeedbackView: View {
-    var body: some View {
-        Text("Feedback View")
-            .font(.largeTitle)
-            .padding()
-    }
-}
-
-struct HouseInfoView: View {
-    var body: some View {
-        Text("House Info View")
-            .font(.largeTitle)
-            .padding()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }

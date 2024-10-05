@@ -34,9 +34,3 @@ struct ScrollableProfileSectionView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ScrollableProfileSectionView()
-    }
-}
