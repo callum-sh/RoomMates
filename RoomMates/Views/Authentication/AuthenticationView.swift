@@ -16,47 +16,62 @@ struct AuthenticationView: View {
 
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                VStack(spacing: 15) {
-                    TextField("Email", text: $email)
-                        .keyboardType(.emailAddress)
-                        .autocapitalization(.none)
-                        .padding()
-                        .background(Color(.secondarySystemBackground))
-                        .cornerRadius(5)
-
-                    SecureField("Password", text: $password)
-                        .padding()
-                        .background(Color(.secondarySystemBackground))
-                        .cornerRadius(5)
-                }
-                .padding(.horizontal)
+            ZStack {
+                // Background Image
+                // heavy inspiration from 
+                Image("AuthScreenBanner")
+                    .resizable()
+                    .scaledToFill() // Make sure the image fills the entire background
+                    .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure it covers the entire available space
+                    .edgesIgnoringSafeArea(.all) // Extend the background image to cover the entire screen
                 
-                Picker(selection: $isLoginMode, label: Text("Mode")) {
-                    Text("Login").tag(true)
-                    Text("Sign Up").tag(false)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
-
-                Button(action: handleAction) {
-                    Text(isLoginMode ? "Login" : "Create Account")
-                        .foregroundColor(.white)
+                // Foreground Content (Inputs and Buttons)
+                VStack {
+                    VStack(spacing: 20) {
+                        VStack(spacing: 15) {
+                            // Input Section with reduced size
+                            VStack(spacing: 15) {
+                                TextField("Email", text: $email)
+                                    .keyboardType(.emailAddress)
+                                    .autocapitalization(.none)
+                                    .padding()
+                                    .background(Color(.secondarySystemBackground).opacity(0.8))
+                                    .cornerRadius(5)
+                                    .frame(maxWidth: 300)
+                                
+                                SecureField("Password", text: $password)
+                                    .padding()
+                                    .background(Color(.secondarySystemBackground).opacity(0.8))
+                                    .cornerRadius(5)
+                                    .frame(maxWidth: 300 )
+                            }
+                            .padding(.horizontal)
+                        }
+                        
+                        
+                        // Action Button
+                        Button(action: handleAction) {
+                            Text(isLoginMode ? "Login" : "Create Account")
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(maxWidth: 300) // Reduced width to match input size
+                                .background(Color.blue)
+                                .cornerRadius(5)
+                        }
                         .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(5)
+                    }
+                    Spacer()
+
+                    // Toggle Button between Login and Sign Up
+                    Button(action: {
+                        isLoginMode.toggle()
+                    }) {
+                        Text(isLoginMode ? "Create an account? Sign up." : "Already have an account? Log in.")
+                            .foregroundColor(.blue)
+                    }
                 }
                 .padding()
-
-                Button(action: {
-                    isLoginMode.toggle()
-                }) {
-                    Text(isLoginMode ? "Create an account? Sign up." : "Already have an account? Log in.")
-                        .foregroundColor(.blue)
-                }
             }
-            .padding()
             .navigationTitle(isLoginMode ? "Login" : "Sign Up")
             .alert(item: $authError) { error in
                 Alert(title: Text("Error"), message: Text(error), dismissButton: .default(Text("OK")))
@@ -81,6 +96,14 @@ struct AuthenticationView: View {
     }
 }
 
-extension String: Identifiable {
+// TODO: what is this, why do we have it, and why cant we remove it? 
+extension String: @retroactive Identifiable {
     public var id: String { self }
+}
+
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        AuthenticationView()
+            .environmentObject(AuthViewModel()) // Ensure to provide the environment object
+    }
 }

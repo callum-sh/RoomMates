@@ -2,60 +2,91 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
-    @ObservedObject var viewModel = ExpensesViewModel()
-    @ObservedObject var householdViewModel = HouseholdViewModel()
-    @State private var showingAddExpense = false
-    @State private var showingOverview = false
-    @State private var showingDebts = false
-    @State private var showingHouseholdSetup = false
-    @State private var selectedExpense: Expense?
+    @State private var scrollOffset: CGFloat = 0
+    @State private var isProfileExpanded = false
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach($viewModel.expenses) { $expense in
-                    VStack(alignment: .leading) {
-                        Text(expense.description).font(.headline)
-                        Text("Amount: \(expense.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))")
-                    }
-                    .onTapGesture {
-                        selectedExpense = expense
-                    }
-                }
-                .onDelete(perform: deleteExpense)
-            }
-            .navigationTitle("Expenses")
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Button(action: { showingDebts = true }) {
-                        Label("View Debts", systemImage: "dollarsign.circle")
-                    }
-                    Button(action: { showingOverview = true }) {
-                        Label("Overview", systemImage: "chart.bar")
-                    }
-                    Button(action: { showingHouseholdSetup.toggle() }) {
-                        Image(systemName: "house")
+        NavigationStack {
+            VStack {
+                // Main Content
+                ZStack(alignment: .top) {
+                    // Background color to match the fade effect
+                    Color(.systemBackground)
+                        .edgesIgnoringSafeArea(.all)
+
+                    VStack(spacing: 0) {
+                        // Header with dynamic opacity and height
+                        headerView
+                        // ScrollView with GeometryReader to track offset
                     }
                 }
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button(action: { showingAddExpense = true }) {
-                        Label("Add Expense", systemImage: "plus")
-                    }
-                    Button(action: {
-                        authViewModel.signOut()
-                    }) {
-                        Text("Log Out")
-                            .foregroundColor(.red)
-                    }
+                
+                // Nav Footer
+                TabView {
+                    ExpensesView()
+                        .tabItem {
+                            Image(systemName: "dollarsign.circle.fill")
+                            Text("Expenses")
+                        }
+                    
+                    FeedbackView()
+                        .tabItem {
+                            Image(systemName: "bubble.left.and.bubble.right.fill")
+                            Text("Feedback")
+                        }
+
+                    HouseInfoView()
+                        .tabItem {
+                            Image(systemName: "house.fill")
+                            Text("Chores")
+                        }
                 }
-            }
-            .sheet(isPresented: $showingOverview) {
-                // MonthlyStatisticsView(viewModel: viewModel, month: Date())
+                .navigationDestination(isPresented: $isProfileExpanded) {
+                    ProfileView()
+                }
+                .navigationTitle("RoomMate")
             }
         }
     }
+    
+    // TODO: move into new file?
+    private var headerView: some View {
+        VStack {
+            if scrollOffset < 100 {
+                // Header Content
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        // Profile picture clicked
+                        isProfileExpanded = true
+                    }) {
+                        Image(systemName: "person.crop.circle")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .clipShape(Circle())
+                    }
+                    .padding()
+                }
+            }
 
-    private func deleteExpense(at offsets: IndexSet) {
-        viewModel.expenses.remove(atOffsets: offsets)
+            Spacer()
+        }
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color(red: 0.82, green: 0.82, blue: 0.94),   // Soft teal
+                    .gray // gray (believe it or not)
+                ]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        )
+        .background(.ultraThinMaterial)
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }

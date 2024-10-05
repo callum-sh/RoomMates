@@ -11,7 +11,6 @@
 		F254476D2CB0922000D30F23 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F254476C2CB0922000D30F23 /* FirebaseAuth */; };
 		F254476F2CB0922000D30F23 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = F254476E2CB0922000D30F23 /* FirebaseCore */; };
 		F25447712CB0922000D30F23 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F25447702CB0922000D30F23 /* FirebaseDatabase */; };
-		F254478F2CB0994B00D30F23 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F254478E2CB0994B00D30F23 /* Models.swift */; };
 		F25447912CB0994B00D30F23 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F254478D2CB0994B00D30F23 /* ContentView.swift */; };
 		F25447932CB099D200D30F23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F25447922CB099D200D30F23 /* GoogleService-Info.plist */; };
 		F2E647152B09AB1300897C9D /* RoomMatesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E647142B09AB1300897C9D /* RoomMatesApp.swift */; };
@@ -41,7 +40,6 @@
 
 /* Begin PBXFileReference section */
 		F254478D2CB0994B00D30F23 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F254478E2CB0994B00D30F23 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		F25447922CB099D200D30F23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F2E647112B09AB1300897C9D /* RoomMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E647142B09AB1300897C9D /* RoomMatesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomMatesApp.swift; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 				F25447742CB094D100D30F23 /* ViewModels */,
 				F2E647142B09AB1300897C9D /* RoomMatesApp.swift */,
 				F254478D2CB0994B00D30F23 /* ContentView.swift */,
-				F254478E2CB0994B00D30F23 /* Models.swift */,
 				F2E647182B09AB1400897C9D /* Assets.xcassets */,
 				F25447922CB099D200D30F23 /* GoogleService-Info.plist */,
 				F2E6471A2B09AB1400897C9D /* Preview Content */,
@@ -292,7 +289,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F254478F2CB0994B00D30F23 /* Models.swift in Sources */,
 				F25447912CB0994B00D30F23 /* ContentView.swift in Sources */,
 				F2E647152B09AB1300897C9D /* RoomMatesApp.swift in Sources */,
 			);
