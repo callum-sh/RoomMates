@@ -8,20 +8,10 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                // Main Content
-                ZStack(alignment: .top) {
-                    // Background color to match the fade effect
-                    Color(.systemBackground)
-                        .edgesIgnoringSafeArea(.all)
-
-                    VStack(spacing: 0) {
-                        // Header with dynamic opacity and height
-                        headerView
-                        // ScrollView with GeometryReader to track offset
-                    }
-                }
+                // Header with dynamic opacity and height
+                headerView
                 
-                // Nav Footer
+                // Main Content with Tab Navigation
                 TabView {
                     ExpensesView()
                         .tabItem {
@@ -41,19 +31,20 @@ struct ContentView: View {
                             Text("Chores")
                         }
                 }
-                .navigationDestination(isPresented: $isProfileExpanded) {
-                    ProfileView()
-                }
-                .navigationTitle("RoomMate")
+                .accentColor(.blue) // Customize tab selection color
+            }
+            .background(Color(.systemBackground))
+            .edgesIgnoringSafeArea(.bottom) // Extend background color under the tab bar
+            .navigationDestination(isPresented: $isProfileExpanded) {
+                ProfileView()
             }
         }
     }
-    
-    // TODO: move into new file?
+
+    // Header view with profile button
     private var headerView: some View {
         VStack {
             if scrollOffset < 100 {
-                // Header Content
                 HStack {
                     Spacer()
                     Button(action: {
@@ -74,8 +65,8 @@ struct ContentView: View {
         .background(
             LinearGradient(
                 gradient: Gradient(colors: [
-                    Color(red: 0.82, green: 0.82, blue: 0.94),   // Soft teal
-                    .gray // gray (believe it or not)
+                    Color(red: 0.82, green: 0.82, blue: 0.94),
+                    .gray
                 ]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
@@ -88,5 +79,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(AuthViewModel())
     }
 }
