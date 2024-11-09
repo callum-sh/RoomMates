@@ -1,3 +1,4 @@
 *.plist
 Pods/
 Podfile.lock
+RoomMates.xcodeproj/project.xcworkspace/xcuserdata/
